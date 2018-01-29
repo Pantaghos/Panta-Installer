@@ -30,6 +30,7 @@ if [ "$1" = "install" ]
 		echo -e "$B[$D $P.install $B] $ERROR Commands for$A Install: $R"
 		echo -e "$B[$D $P.install $B] $A ./panta.sh install-java $R"
 		echo -e "$B[$D $P.install $B] $A ./panta.sh install-php $R"
+		echo -e "$B[$D $P.install $B] $A ./panta.sh install-php5-gd $R"
 		echo -e "$B[$D $P.install $B] $A ./panta.sh install-npm $R"
 		echo -e "$B[$D $P.install $B] $A ./panta.sh install-apache2 $R"
 		echo -e "$B[$D $P.install $B] $A ./panta.sh install-all $R"
@@ -51,6 +52,23 @@ elif [ "$1" = "install-php" ]
 		  let d=$d+1
 		done
 		echo -e "$B[$D $P.install-php $B] $A PHP5 is now installed! $R"
+		
+		
+		
+elif [ "$1" = "install-php5-gd" ]
+	then
+		apt-get install php5-gd
+		apt-get update -y
+		apt-get upgrade -y
+	clear
+		d=0
+		while [ $d -le 100 ]
+		do
+		  echo " "
+		  let d=$d+1
+		done
+		echo -e "$B[$D $P.install-php5-gd $B] $A PHP5-GD is now installed! $R"
+		
 
 elif [ "$1" = "install-java" ]
 	then
@@ -113,6 +131,11 @@ elif [ "$1" = "install-all" ]
 	clear
 		apt-get install apache2 -y
 	clear
+		apt-get install php5-gd
+	clear
+		apt-get update -y
+		apt-get upgrade -y
+	clear
 
 		d=0
 		while [ $d -le 100 ]
@@ -122,6 +145,7 @@ elif [ "$1" = "install-all" ]
 		done
 		
 		echo -e "$B[$D $P.install-all $B] $A PHP is now installed! $R"
+		echo -e "$B[$D $P.install-all $B] $A PHP5-GD is now installed! $R"
 		echo -e "$B[$D $P.install-all $B] $A Java is now installed! $R"
 		echo -e "$B[$D $P.install-all $B] $A NPM is now installed! $R"
 		echo -e "$B[$D $P.install-all $B] $A Apache2 is now installed! $R"
